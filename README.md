@@ -7,8 +7,23 @@ Templates used for my projects
 * pytest: used for running tests
 
 # Running tests
-`pytest`
-* Unit tests are located in `tests/`
+* Ensure you are in project root directory
+```
+ls
+
+bakingtray
+  commonlib/
+    ...
+  misc/
+    ...
+  tests/
+    commonlibtest.ini
+    test_commonlib.py
+  WebApp.ini
+  WebApp.py
+  ...
+```
+* Run `pytest`
 
 # Running the Flask web app
 `python WebApp.py`
