@@ -1,4 +1,4 @@
-from flask import Flask, Response, url_for
+from flask import Flask, Response, url_for, render_template
 import json
 import socket
 
@@ -14,17 +14,20 @@ def stub_test():
     return True
 
 
+# Helper method for site-map
 def has_no_empty_params(rule):
     defaults = rule.defaults if rule.defaults is not None else ()
     arguments = rule.arguments if rule.arguments is not None else ()
     return len(defaults) >= len(arguments)
 
 
+# Root, uses render_templete to generate HTML with CSS styling
 @app.route('/')
 def index():
-    return "Hello World"
+    return render_template('index.html')
 
 
+# Sample JSON response
 @app.route("/json-response")
 def json_response():
     body = {
@@ -39,6 +42,7 @@ def json_response():
     return response_object
 
 
+# Shows the different routes
 @app.route("/site-map")
 def site_map():
     links = []
