@@ -1,4 +1,4 @@
-from flask import Flask, Response, url_for, render_template
+from flask import Flask, Response, url_for, render_template, request, make_response
 import json
 import socket
 
@@ -7,6 +7,21 @@ from commonlib.initproperties import InitProperties
 # Initialize Flask related properties
 webapp_properties = InitProperties('Properties.ini').webapp()
 app = Flask(__name__)
+
+PLAIN_TEXT_AGENTS = [
+    "curl",
+    "httpie",
+    "lwp-request",
+    "wget",
+    "python-requests",
+    "python-httpx",
+    "openbsd ftp",
+    "powershell",
+    "fetch",
+    "aiohttp",
+    "http_get",
+    "xh",
+]
 
 
 # Used for stubbing
@@ -56,5 +71,24 @@ def site_map():
     return links
 
 
+@app.route("/cli")
+def cli():
+
+    parsed_query = {
+        'user_agent': request.headers.get('User-Agent', '').lower()
+    }
+
+    user_agent = parsed_query.get('user_agent', '').lower()
+    is_html = not any(agent in user_agent for agent in PLAIN_TEXT_AGENTS)
+
+    if is_html:
+        return render_template('index.html')
+    else:
+        response = make_response(f"From CLI\n", 200)
+        response.mimetype = "text/plain"
+        return response
+
+
 if __name__ == '__main__':
-    app.run(host=webapp_properties['host'], port=webapp_properties['port'])
+    # app.run(host=webapp_properties['host'], port=webapp_properties['port'])
+    app.run()
