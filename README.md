@@ -1,6 +1,9 @@
 # bakingtray
 Templates used for my projects
 
+# Quick Start
+* Visit: http://migz.xyz
+
 # Requirements
 `pip install -r requirements.txt`
 * Flask: used for the web app
