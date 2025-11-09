@@ -90,5 +90,4 @@ def cli():
 
 
 if __name__ == '__main__':
-    # app.run(host=webapp_properties['host'], port=webapp_properties['port'])
-    app.run()
+    app.run(host=webapp_properties['host'], port=webapp_properties['port'])
