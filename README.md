@@ -11,17 +11,17 @@ Templates used for my projects
 ```
 ls
 
-bakingtray
-  commonlib/
-    ...
-  misc/
-    ...
-  tests/
-    commonlibtest.ini
-    test_commonlib.py
-  WebApp.ini
-  WebApp.py
-  ...
+bakingtray/
+├── commonlib/
+│   └── ...
+├── misc/
+│   └── ...
+├── tests/
+│   ├── commonlibtest.ini
+│   └── test_commonlib.py
+├── WebApp.ini
+├── WebApp.py
+└── ...
 ```
 * Run `pytest`
 
