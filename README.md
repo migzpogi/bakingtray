@@ -31,3 +31,6 @@ bakingtray/
 # Running the Flask web app
 `python WebApp.py`
 * Configure application properties in `WebApp.ini`
+
+# Running via wsgi
+`uwsgi --http 127.0.0.1:8000 --master -p 4 -w wsgi:app`
